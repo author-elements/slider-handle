@@ -2,27 +2,11 @@ class AuthorSliderHandleElement extends AuthorBaseElement(HTMLElement) {
   constructor () {
     super(`{{TEMPLATE-STRING}}`)
 
-    this.UTIL.definePrivateMethods({
+    this.UTIL.registerListeners(this, {
       connected: () => {
         this.UTIL.insertStyleRules({
           positionRule: ':host {}'
         })
-      },
-
-      pointermoveHandler: evt => {
-        console.log(evt)
-      },
-
-      pointerupHandler: evt => {
-        this.removeEventListener('pointermove', this.PRIVATE.pointermoveHandler)
-        this.removeEventListener('pointerup', this.PRIVATE.pointerupHandler)
-      }
-    })
-
-    this.UTIL.registerListeners(this, {
-      pointerdown: evt => {
-        this.addEventListener('pointermove', this.PRIVATE.pointermoveHandler)
-        this.addEventListener('pointerup', this.PRIVATE.pointerupHandler)
       }
     })
   }

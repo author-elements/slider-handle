@@ -1,6 +1,6 @@
 // Copyright (c) 2019 Author.io. MIT licensed.
-// @author.io/element-slider-handle v1.0.0 available at github.com/author-elements/slider-handle
-// Last Build: 8/6/2019, 3:56:54 PM
+// @author.io/element-slider-handle v1.0.1 available at github.com/author-elements/slider-handle
+// Last Build: 8/6/2019, 4:09:45 PM
 var AuthorSliderHandleElement = (function () {
   'use strict';
 
@@ -105,27 +105,11 @@ var AuthorSliderHandleElement = (function () {
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(AuthorSliderHandleElement).call(this, "<template><style>@charset \"UTF-8\"; :host *,:host :after,:host :before{box-sizing:border-box}author-slider-handle *,author-slider-handle :after,author-slider-handle :before{box-sizing:border-box}</style><slot></slot></template>"));
 
-      _this.UTIL.definePrivateMethods({
+      _this.UTIL.registerListeners(_assertThisInitialized(_this), {
         connected: function connected() {
           _this.UTIL.insertStyleRules({
             positionRule: ':host {}'
           });
-        },
-        pointermoveHandler: function pointermoveHandler(evt) {
-          console.log(evt);
-        },
-        pointerupHandler: function pointerupHandler(evt) {
-          _this.removeEventListener('pointermove', _this.PRIVATE.pointermoveHandler);
-
-          _this.removeEventListener('pointerup', _this.PRIVATE.pointerupHandler);
-        }
-      });
-
-      _this.UTIL.registerListeners(_assertThisInitialized(_this), {
-        pointerdown: function pointerdown(evt) {
-          _this.addEventListener('pointermove', _this.PRIVATE.pointermoveHandler);
-
-          _this.addEventListener('pointerup', _this.PRIVATE.pointerupHandler);
         }
       });
 
