@@ -1,5 +1,5 @@
 @chassis init;
-@chassis include anchor buttons form-controls author-slider-handle;
+@chassis include anchor buttons form-controls;
 
 .author-slider-handle.demo {
   & pre {
