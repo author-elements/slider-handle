@@ -2,22 +2,13 @@ class AuthorSliderHandleElement extends AuthorBaseElement(HTMLElement) {
   constructor () {
     super(`{{TEMPLATE-STRING}}`)
 
-    this.UTIL.defineProperties({
-      position: {
-        private: true,
-        default: {
-          x: 0,
-          y: 0
-        }
+    this.UTIL.definePrivateMethods({
+      connected: () => {
+        this.UTIL.insertStyleRules({
+          positionRule: ':host {}'
+        })
       },
 
-      axis: {
-        private: true,
-        default: 'x'
-      }
-    })
-
-    this.UTIL.definePrivateMethods({
       pointermoveHandler: evt => {
         console.log(evt)
       },
@@ -34,6 +25,15 @@ class AuthorSliderHandleElement extends AuthorBaseElement(HTMLElement) {
         this.addEventListener('pointerup', this.PRIVATE.pointerupHandler)
       }
     })
+  }
+
+  set position ({ x, y }) {
+    if (!this.PRIVATE.styleRules.hasOwnProperty('positionRule')) {
+      return
+    }
+
+    this.UTIL.setStyleProperty('positionRule', 'left', `${x.pct * 100}%`)
+    this.UTIL.setStyleProperty('positionRule', 'top', `${y.pct * 100}%`)
   }
 }
 
