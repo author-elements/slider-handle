@@ -16,8 +16,13 @@ class AuthorSliderHandleElement extends AuthorBaseElement(HTMLElement) {
       return
     }
 
-    this.UTIL.setStyleProperty('positionRule', 'left', `${x.pct * 100}%`)
-    this.UTIL.setStyleProperty('positionRule', 'top', `${y.pct * 100}%`)
+    if (x) {
+      this.UTIL.setStyleProperty('positionRule', 'left', `${x.pct * 100}%`)
+    }
+
+    if (y) {
+      this.UTIL.setStyleProperty('positionRule', 'top', `${y.pct * 100}%`)
+    }
   }
 }
 
